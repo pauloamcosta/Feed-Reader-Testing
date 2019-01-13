@@ -21,7 +21,7 @@ $(function() {
          * allFeeds in app.js to be an empty array and refresh the
          * page?
          */
-        it('are defined', function() {
+        it('Estão definidos', function() {
             expect(allFeeds).toBeDefined();
             expect(allFeeds.length).not.toBe(0);
         });
@@ -32,20 +32,19 @@ $(function() {
          * and that the URL is not empty.
          */
 
-        it('URL is not empty', function() {
+        it('URL definido e não vazio', function() {
             for(let i = 0; i < allFeeds.length; i++){
                 expect(allFeeds[i].url).toBeDefined();
                 expect(allFeeds[i].url.length).not.toBe(0);
             }
         });
 
-
         /* TODO: Write a test that loops through each feed
          * in the allFeeds object and ensures it has a name defined
          * and that the name is not empty.
          */
 
-        it('Name is not empty', function() {
+        it('Name definido e não vazio', function() {
             for(let i = 0; i < allFeeds.length; i++){
                 expect(allFeeds[i].name).toBeDefined();
                 expect(allFeeds[i].name.length).not.toBe(0);
@@ -56,14 +55,14 @@ $(function() {
 
 
     /* TODO: Write a new test suite named "The menu" */
-    describe('The Menu', function() {
+    describe('O menu', function() {
 
         /* TODO: Write a test that ensures the menu element is
          * hidden by default. You'll have to analyze the HTML and
          * the CSS to determine how we're performing the
          * hiding/showing of the menu element.
          */
-        it('Menu hiding/showing', function() {
+        it('Menu está escondido', function() {
             expect($('body').hasClass('menu-hidden')).toEqual(true);
         });
 
@@ -73,7 +72,7 @@ $(function() {
           * clicked and does it hide when clicked again.
           */
 
-         it('Menu changes visibility when icon is clicked', function() {
+         it('Menu altera visibilidade quando clicado', function() {
             $('.menu-icon-link').trigger('click');
             expect($('body').hasClass('menu-hidden')).toEqual(false);
             $('.menu-icon-link').trigger('click');
@@ -90,12 +89,12 @@ $(function() {
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
 
-        describe('Initial Entries', function() {
+        describe('Entradas iniciais', function() {
             beforeEach(function(done) {
                 loadFeed(0, done)
              });
     
-            it('Menu changes visibility when icon is clicked', function() {
+            it('Feed tem pelo menos um elemento .entry', function() {
                 expect($('.feed .entry').length).not.toBe(0);
             });
         });
@@ -107,7 +106,7 @@ $(function() {
          * Remember, loadFeed() is asynchronous.
          */
 
-        describe('New Feed Selection', function() {
+        describe('Entradas iniciais', function() {
             let initalContent, newContent;
 
             beforeEach(function(done){
@@ -119,7 +118,7 @@ $(function() {
                     });
                 });
              });
-             it('Should change content', function(){
+             it('Carregando novo feed', function(){
                 expect(initalContent).not.toBe(newContent);
             });
         })
