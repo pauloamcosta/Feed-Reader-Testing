@@ -90,10 +90,37 @@ $(function() {
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
 
+        describe('Initial Entries', function() {
+            beforeEach(function(done) {
+                loadFeed(0, done)
+             });
+    
+            it('Menu changes visibility when icon is clicked', function() {
+                expect($('.feed .entry').length).not.toBe(0);
+            });
+        });
+
     /* TODO: Write a new test suite named "New Feed Selection" */
 
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
+
+        describe('New Feed Selection', function() {
+            let initalContent, newContent;
+
+            beforeEach(function(done){
+                loadFeed(0, function() {
+                    initalContent = $('.feed .entry').contents();
+                    loadFeed(1, function() {
+                        newContent = $('.feed .entry').contents();
+                        done();
+                    });
+                });
+             });
+             it('Should change content', function(){
+                expect(initalContent).not.toBe(newContent);
+            });
+        })
 }());
